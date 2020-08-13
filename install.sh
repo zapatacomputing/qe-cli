@@ -45,9 +45,11 @@ have_sudo_access() {
 #Must run with root
 have_sudo_access;
 
+qe_config_dir=$(eval echo "~$SUDO_USER")/.qe
 qe_bin_dir=$(eval echo "~$SUDO_USER")/qe/bin
 
 ohai "This script will install:"
+echo "- $qe_config_dir"
 echo "- /usr/local/bin/qe"
 echo "- $qe_bin_dir/git-import"
 
@@ -93,6 +95,9 @@ fi
 #Ensure QE Binary is executable.
 chmod +x /usr/local/bin/qe
 
+#Make QE Config Dir
+mkdir -p $qe_config_dir
+chown $SUDO_USER:"$(id -g $SUDO_USER)" $qe_config_dir
 #Make QE Bin Dir
 mkdir -p $qe_bin_dir
 chown $SUDO_USER:"$(id -g $SUDO_USER)" $qe_bin_dir
