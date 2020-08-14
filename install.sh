@@ -46,10 +46,12 @@ have_sudo_access() {
 have_sudo_access;
 
 qe_config_dir=$(eval echo "~$SUDO_USER")/.qe
+qe_bin_dir=$(eval echo "~$SUDO_USER")/qe/bin
 
 ohai "This script will install:"
-echo "- /usr/local/bin/qe"
 echo "- $qe_config_dir"
+echo "- /usr/local/bin/qe"
+echo "- $qe_bin_dir/git-import"
 
 #Check if the OS is Linux.
 if [[ "$(uname)" = "Linux" ]]; then
@@ -96,6 +98,28 @@ chmod +x /usr/local/bin/qe
 #Make QE Config Dir
 mkdir -p $qe_config_dir
 chown $SUDO_USER:"$(id -g $SUDO_USER)" $qe_config_dir
+#Make QE Bin Dir
+mkdir -p $qe_bin_dir
+chown $SUDO_USER:"$(id -g $SUDO_USER)" $qe_bin_dir
+
+#Obtain git-import.
+if [[ "${QE_ON_LINUX-}" ]]; then
+  if [[ "${QE_ON_64_BIT-}" ]]; then
+    curl -S -L "https://github.com/zapatacomputing/git-import/releases/latest/download/git-import-linux-amd64" -o $qe_bin_dir/git-import
+  else
+    curl -S -L "https://github.com/zapatacomputing/git-import/releases/latest/download/git-import-linux-386" -o $qe_bin_dir/git-import
+  fi
+elif [[ "${QE_ON_DARWIN-}" ]]; then
+  if [[ "${QE_ON_64_BIT-}" ]]; then
+    curl -S -L "https://github.com/zapatacomputing/git-import/releases/latest/download/git-import-darwin-amd64" -o $qe_bin_dir/git-import
+  else
+    curl -S -L "https://github.com/zapatacomputing/git-import/releases/latest/download/git-import-darwin-386" -o $qe_bin_dir/git-import
+  fi
+else
+  abort "Only Linux and MacOS is supported with this installer. Please go to https://github.com/zapatacomputing/qe-cli for latest releases."
+fi
+
+chmod +x $qe_bin_dir/git-import
 
 #Success.
 ohai "Installation successful!"
