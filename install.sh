@@ -46,6 +46,7 @@ have_sudo_access() {
 have_sudo_access;
 
 qe_config_dir=$(eval echo "~$SUDO_USER")/.qe
+qe_root_dir=$(eval echo "~$SUDO_USER")/qe
 qe_bin_dir=$(eval echo "~$SUDO_USER")/qe/bin
 
 ohai "This script will install:"
@@ -100,6 +101,7 @@ mkdir -p $qe_config_dir
 chown $SUDO_USER:"$(id -g $SUDO_USER)" $qe_config_dir
 #Make QE Bin Dir
 mkdir -p $qe_bin_dir
+chown $SUDO_USER:"$(id -g $SUDO_USER)" $qe_root_dir
 chown $SUDO_USER:"$(id -g $SUDO_USER)" $qe_bin_dir
 
 #Obtain git-import.
