@@ -54,8 +54,7 @@ echo "- $qe_config_dir"
 echo "- /usr/local/bin/qe"
 echo "- $qe_bin_dir/git-import"
 
-#
-if the OS is Linux.
+# if the OS is Linux.
 if [[ "$(uname)" = "Linux" ]]; then
   QE_ON_LINUX=1
   if [[ "$(uname -m)" = "x86_64" ]]; then
