@@ -2,7 +2,7 @@ You may optionally append the following line to your startup script to allow the
 re-use of ssh-agent across shell sessions.
 
 Example for Bash shell user:
-echo 'source ~/qe/bin/ssh-agent-activate.sh' >> ~/.bashrc 
+"echo 'source ~/qe/bin/ssh-agent-activate.sh' >> ~/.bashrc"
 
 
 
