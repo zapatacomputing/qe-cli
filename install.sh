@@ -53,6 +53,7 @@ ohai "This script will install:"
 echo "- $qe_config_dir"
 echo "- /usr/local/bin/qe"
 echo "- $qe_bin_dir/git-import"
+echo "- $qe_bin_dir/ssh-agent-activate.sh"
 
 # if the OS is Linux.
 if [[ "$(uname)" = "Linux" ]]; then
@@ -75,6 +76,10 @@ if [[ ! -d "/usr/local/bin" ]] ; then
   mkdir -p /usr/local/bin
   chown $SUDO_USER:"$(id -g $SUDO_USER)" /usr/local/bin
 fi
+
+# Obtain the resource ssh-agent-activate.sh 
+curl -S -L https://raw.githubusercontent.com/zapatacomputing/qe-cli/master/resource/ssh-agent-activate.sh -o $qe_bin_dir/ssh-agent-activate.sh
+chmod +x $qe_bin_dir/ssh-agent-activate.sh
 
 #Obtain QE Binary.
 if [[ "${QE_ON_LINUX-}" ]]; then
