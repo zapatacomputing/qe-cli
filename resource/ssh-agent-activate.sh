@@ -29,3 +29,6 @@ if [ "$?" == 2 ]; then
     eval "$(<~/.ssh-agent-env)" >/dev/null
   fi
 fi
+
+# Add github as known host
+ssh-keyscan github.com >> ~/.ssh/known_hosts
