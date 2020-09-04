@@ -77,10 +77,6 @@ if [[ ! -d "/usr/local/bin" ]] ; then
   chown $SUDO_USER:"$(id -g $SUDO_USER)" /usr/local/bin
 fi
 
-# Obtain the resource ssh-agent-activate.sh 
-curl -S -L https://raw.githubusercontent.com/zapatacomputing/qe-cli/master/resource/ssh-agent-activate.sh -o $qe_bin_dir/ssh-agent-activate.sh
-chmod +x $qe_bin_dir/ssh-agent-activate.sh
-
 #Obtain QE Binary.
 if [[ "${QE_ON_LINUX-}" ]]; then
   if [[ "${QE_ON_64_BIT-}" ]]; then
@@ -108,6 +104,10 @@ chown $SUDO_USER:"$(id -g $SUDO_USER)" $qe_config_dir
 mkdir -p $qe_bin_dir
 chown $SUDO_USER:"$(id -g $SUDO_USER)" $qe_root_dir
 chown $SUDO_USER:"$(id -g $SUDO_USER)" $qe_bin_dir
+
+# Obtain the resource ssh-agent-activate.sh 
+curl -S -L https://raw.githubusercontent.com/zapatacomputing/qe-cli/master/resource/ssh-agent-activate.sh -o $qe_bin_dir/ssh-agent-activate.sh
+chmod +x $qe_bin_dir/ssh-agent-activate.sh
 
 #Obtain git-import.
 if [[ "${QE_ON_LINUX-}" ]]; then
