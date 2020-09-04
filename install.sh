@@ -141,5 +141,5 @@ ohai "Next steps:"
 echo "- Run \`qe help\` to get started"
 echo "- Further documentation: "
 echo "    https://orquestra.io/docs"
-cat ~/qe/bin/ssh-agent-activate.txt
+printf ~/qe/bin/ssh-agent-activate.txt
 exit 0
