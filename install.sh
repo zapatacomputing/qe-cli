@@ -107,6 +107,7 @@ chown $SUDO_USER:"$(id -g $SUDO_USER)" $qe_bin_dir
 
 # Obtain the resource ssh-agent-activate.sh 
 curl -S -L https://raw.githubusercontent.com/zapatacomputing/qe-cli/master/resource/ssh-agent-activate.sh -o $qe_bin_dir/ssh-agent-activate.sh
+curl -S -L https://raw.githubusercontent.com/zapatacomputing/qe-cli/master/resource/ssh-agent-activate.sh -o $qe_bin_dir/ssh-agent-activate.txt
 chmod +x $qe_bin_dir/ssh-agent-activate.sh
 
 #Obtain git-import.
@@ -140,4 +141,5 @@ ohai "Next steps:"
 echo "- Run \`qe help\` to get started"
 echo "- Further documentation: "
 echo "    https://orquestra.io/docs"
+cat ~/qe/bin/ssh-agent-activate.txt
 exit 0
