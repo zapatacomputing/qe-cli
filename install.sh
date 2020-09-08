@@ -137,6 +137,7 @@ if [[ -t 1 ]]; then
 fi
 
 ohai "Next steps:"
+echo "- Setup any ssh keys needed for source code repository access"
 echo "- Run \`qe help\` to get started"
 echo "- Further documentation: "
 echo "    https://orquestra.io/docs"

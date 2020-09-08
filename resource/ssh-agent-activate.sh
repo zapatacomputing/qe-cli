@@ -20,15 +20,17 @@
 #       read the .ssh-agent-env content and pass it via a pipe to the bash
 
 ssh-add -l &>/dev/null
-if [ "$?" == 2 ]; then
+if [ $? -gt 0 ]; then
   test -r ~/.ssh-agent-env && \
     eval "$(<~/.ssh-agent-env)" >/dev/null
   ssh-add -l &>/dev/null
-  if [ "$?" == 2 ]; then
+  if [ $? -gt 0 ]; then
     (umask 066; ssh-agent > ~/.ssh-agent-env)
     eval "$(<~/.ssh-agent-env)" >/dev/null
   fi
 fi
 
 # Add github as known host
+mkdir -p ~/.ssh
+touch ~/.ssh/known_hosts
 ssh-keyscan github.com >> ~/.ssh/known_hosts
