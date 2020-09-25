@@ -140,5 +140,5 @@ ohai "Next steps:"
 echo "- Setup any ssh keys needed for source code repository access"
 echo "- Run \`qe help\` to get started"
 echo "- Further documentation: "
-echo "    https://orquestra.io/docs"
+echo "    http://docs.orquestra.io/"
 exit 0
