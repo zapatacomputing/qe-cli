@@ -80,15 +80,15 @@ fi
 #Obtain QE Binary.
 if [[ "${QE_ON_LINUX-}" ]]; then
   if [[ "${QE_ON_64_BIT-}" ]]; then
-    curl -S -L "https://github.com/zapatacomputing/qe-cli/releases/latest/download/qe-linux-amd64" -o /usr/local/bin/qe
+    curl -S -L "https://github.com/zapatacomputing/qe-cli/releases/download/v0.0.103/qe-linux-amd64" -o /usr/local/bin/qe
   else
-    curl -S -L "https://github.com/zapatacomputing/qe-cli/releases/latest/download/qe-linux-386" -o /usr/local/bin/qe
+    curl -S -L "https://github.com/zapatacomputing/qe-cli/releases/download/v0.0.103/qe-linux-386" -o /usr/local/bin/qe
   fi
 elif [[ "${QE_ON_DARWIN-}" ]]; then
   if [[ "${QE_ON_64_BIT-}" ]]; then
-    curl -S -L "https://github.com/zapatacomputing/qe-cli/releases/latest/download/qe-darwin-amd64" -o /usr/local/bin/qe
+    curl -S -L "https://github.com/zapatacomputing/qe-cli/releases/download/v0.0.103/qe-darwin-amd64" -o /usr/local/bin/qe
   else
-    curl -S -L "https://github.com/zapatacomputing/qe-cli/releases/latest/download/qe-darwin-386" -o /usr/local/bin/qe
+    curl -S -L "https://github.com/zapatacomputing/qe-cli/releases/download/v0.0.103/qe-darwin-386" -o /usr/local/bin/qe
   fi
 else
   abort "Only Linux and MacOS is supported with this installer. Please go to https://github.com/zapatacomputing/qe-cli for latest releases."
